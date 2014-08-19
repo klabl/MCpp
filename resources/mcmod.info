@@ -1,0 +1,16 @@
+[
+{
+  "modid": "mcpp",
+  "name": "MC++",
+  "description": "Incrementing Minecraft",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Pwngu"],
+  "credits": "The Forge and FML and MCP guys, for making this possible",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

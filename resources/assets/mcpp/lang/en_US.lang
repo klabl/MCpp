@@ -1,0 +1,45 @@
+itemGroup.icpp=IC++
+
+item.nuggets.iron.name=Iron Nugget
+item.nuggets.copper.name=Copper Nugget
+item.nuggets.tin.name=Tin Nugget
+item.nuggets.lead.name=Lead Nugget
+item.nuggets.silver.name=Silver Nugget
+
+item.pebbles.iron.name=Iron Pebble
+item.pebbles.gold.name=Gold Pebble
+item.pebbles.copper.name=Copper Pebble
+item.pebbles.tin.name=Tin Pebble
+item.pebbles.lead.name=Lead Pebble
+item.pebbles.silver.name=Silver Pebble
+item.pebbles.uranium.name=Uranium Pebble
+
+item.dusts.blazingGlowstone.name=Blazing Glowstone Dust
+item.dusts.endstone.name=Endstone Dust
+item.dusts.lapend.name=Lapend Dust
+
+item.bottles.juice.apple.name=Apple Juice
+item.bottles.juice.carrot.name=Carrot Juice
+item.bottles.juice.melon.name=Melon Juice
+item.bottles.juice.coldTea.name=Cold Tea
+item.bottles.juice.hotTea.name=Brewed Tea
+
+item.bottles.cleanWater.name=Purified Water Bottle
+
+item.bandage.name=Bandage
+
+item.tools.filter.name=Water Filter
+
+item.buckets.cleanWater.name=Clean Water Bucket
+
+potion.zombiefication=Infection
+potion.thirst=Thirst
+potion.wounded=Wounded
+
+tooltip.mode=Mode
+tooltip.mode.combat=Combat
+tooltip.mode.explosive=Explosive
+
+death.attack.mcpp.thirst=%1$s dried out
+death.attack.mcpp.thirstAndStarve=%1$s starved to death while drying out
+death.attack.mcpp.zombiefication=%1$s turned into a zombie
