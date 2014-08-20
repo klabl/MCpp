@@ -8,11 +8,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.FoodStats;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import org.lwjgl.opengl.GL11;
-import net.minecraft.util.FoodStats;
 
 public class MCppGui extends GuiIngameForge {
 
@@ -141,16 +141,16 @@ public class MCppGui extends GuiIngameForge {
 
                 float fatLevel = NeedStats.get(mc.thePlayer).getFatLevel() - (float) idx;
 
-                if(fatLevel >= 2.0F)
+                if(fatLevel >= 1.0)
                     // draw full fat background
                     background = 18;
-                else if(fatLevel >= 1.5)
+                else if(fatLevel >= 0.5)
                     // draw 3/4 fat background
                     background = 27;
-                else if(fatLevel >= 1.0)
+                else if(fatLevel >= 0.0F)
                     // draw half fat background
                     background = 36;
-                else if(fatLevel >= 0.5)
+                else if(fatLevel > -0.5F)
                     // draw 1/4 fat background
                     background = 45;
 
