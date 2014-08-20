@@ -1,7 +1,6 @@
 package mod.pwngu.common.module.thirst.util;
 
 import mod.pwngu.common.main.MCpp;
-import mod.pwngu.common.module.MCppModule;
 import mod.pwngu.common.module.survivial.util.PlayerSpeed;
 import mod.pwngu.common.util.MCppDamageSource;
 import mod.pwngu.common.util.MCppPotion;
@@ -135,20 +134,18 @@ public class NeedStats implements IExtendedEntityProperties {
             }
         }
 
-        if(MCppModule.SURVIVAL.isLoaded) {
 
-            int thirstLevel = getThirstLevel();
-            if (thirstLevel <= 8 && thirstLevel > 6) {
+        int thirstLevel = getThirstLevel();
+        if (thirstLevel <= 8 && thirstLevel > 6) {
 
-                PlayerSpeed.get(player).updateMultiplier("thirst", 0.75F);
-            } else if (thirstLevel <= 6) {
+            PlayerSpeed.get(player).updateMultiplier("thirst", 0.75F);
+        } else if (thirstLevel <= 6) {
 
-                PlayerSpeed.get(player).updateMultiplier("thirst", 0.5F);
-                if (player.isSprinting()) player.setSprinting(false);
-            } else {
+            PlayerSpeed.get(player).updateMultiplier("thirst", 0.5F);
+            if (player.isSprinting()) player.setSprinting(false);
+        } else {
 
-                PlayerSpeed.get(player).updateMultiplier("thirst", 1.0F);
-            }
+            PlayerSpeed.get(player).updateMultiplier("thirst", 1.0F);
         }
 
         if(player.shouldHeal() && foodStats.foodLevel >= 12 && this.getThirstLevel() >= 12 &&

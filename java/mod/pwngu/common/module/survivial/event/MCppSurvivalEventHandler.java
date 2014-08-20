@@ -61,19 +61,6 @@ public class MCppSurvivalEventHandler {
 
         if(ev.entity.worldObj.isRemote) return;
 
-        if(ev.source.getSourceOfDamage() instanceof EntityPlayer) {
-
-            int foodLevel = ((EntityPlayer) ev.source.getSourceOfDamage()).getFoodStats().getFoodLevel();
-
-            if(foodLevel <= 8 && foodLevel > 6) {
-
-                ev.ammount *= 0.75F;
-            } else if(foodLevel <= 4) {
-
-                ev.ammount *= 0.5F;
-            }
-        }
-
         if(ev.entityLiving instanceof EntityPlayer) {
 
             EntityPlayer player = (EntityPlayer) ev.entityLiving;

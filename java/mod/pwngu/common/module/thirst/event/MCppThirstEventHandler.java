@@ -21,6 +21,7 @@ import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
 import net.minecraftforge.event.world.BlockEvent;
 
@@ -173,6 +174,25 @@ public class MCppThirstEventHandler {
                 int amp = ev.entityLiving.getActivePotionEffect(Potion.hunger).getAmplifier();
                 for(int i = 0; i < amp + 1; i++)
                     NeedStats.get((EntityPlayer) ev.entityLiving).addThirstExhaustion(-0.025F);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onLivingHurt(LivingHurtEvent ev) {
+
+        if(ev.entity.worldObj.isRemote) return;
+
+        if(ev.source.getSourceOfDamage() instanceof EntityPlayer) {
+
+            int foodLevel = ((EntityPlayer) ev.source.getSourceOfDamage()).getFoodStats().getFoodLevel();
+
+            if(foodLevel <= 8 && foodLevel > 6) {
+
+                ev.ammount *= 0.75F;
+            } else if(foodLevel <= 4) {
+
+                ev.ammount *= 0.5F;
             }
         }
     }
