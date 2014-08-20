@@ -156,11 +156,6 @@ public class MCppGui extends GuiIngameForge {
 
             }
 
-//            if (mc.thePlayer.getFoodStats().getSaturationLevel() <= 0.0F && updateCounter % (level * 3 + 1) == 0) {
-//
-//                y = top + (rand.nextInt(3) - 1);
-//            }
-
             drawTexturedModalRect(x, y, background, 18, 9, 9);
 
             if (idx < level)
@@ -203,11 +198,6 @@ public class MCppGui extends GuiIngameForge {
 
             int icon = 0;
             int background = 0;
-
-//            if ((stats.getThirstSaturationLevel() <= 0.0F) && updateCounter % (level * 3 + 1) == 0) {
-//
-//                y = top + (rand.nextInt(3) - 1);
-//            }
 
             if(mc.thePlayer.isPotionActive(MCppPotion.THIRST)) {
                 // draw greenish background when poisoned
