@@ -186,7 +186,7 @@ public class NeedStats implements IExtendedEntityProperties {
             if(this.timer >= 80) {
 
                 player.attackEntityFrom(DamageSource.starve, 1.0F);
-                player.addPotionEffect(new PotionEffect(Potion.confusion.id, 60, 1));
+                player.addPotionEffect(new PotionEffect(Potion.confusion.id, 160, 0));
 
                 this.timer = 0;
             }
@@ -198,7 +198,7 @@ public class NeedStats implements IExtendedEntityProperties {
             if(this.timer >= 80) {
 
                 player.attackEntityFrom(MCppDamageSource.THIRST, 1.0F);
-                player.addPotionEffect(new PotionEffect(Potion.confusion.id, 60, 1));
+                player.addPotionEffect(new PotionEffect(Potion.confusion.id, 160, 0));
 
                 this.timer = 0;
             }
@@ -209,7 +209,7 @@ public class NeedStats implements IExtendedEntityProperties {
             if(this.timer >= 5) {
 
                 player.attackEntityFrom(MCppDamageSource.THIRST_AND_STARVE, 1.0F);
-                player.addPotionEffect(new PotionEffect(Potion.confusion.id, 60, 1));
+                player.addPotionEffect(new PotionEffect(Potion.confusion.id, 160, 0));
 
                 this.timer = 0;
             }
