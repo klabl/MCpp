@@ -4,10 +4,10 @@ import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import mod.pwngu.common.item.MCppItem;
+import mod.pwngu.common.item.MCppItemFood;
 import mod.pwngu.common.main.MCpp;
 import mod.pwngu.common.module.thirst.item.ItemDrink;
 import mod.pwngu.common.module.thirst.util.NeedStats;
-import mod.pwngu.common.item.MCppItemFood;
 import mod.pwngu.common.util.MCppPotion;
 import mod.pwngu.core.event.MCppPlayerEvent;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,7 +17,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.FoodStats;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -164,12 +163,16 @@ public class MCppThirstEventHandler {
 
             if(ev.entityLiving.isPotionActive(MCppPotion.THIRST)) {
 
-                NeedStats.get((EntityPlayer) ev.entityLiving).addThirstExhaustion(0.025F);
+                int amp = ev.entityLiving.getActivePotionEffect(MCppPotion.THIRST).getAmplifier();
+                for(int i = 0; i < amp + 1; i++)
+                    NeedStats.get((EntityPlayer) ev.entityLiving).addThirstExhaustion(0.025F);
             }
 
             if(ev.entityLiving.isPotionActive(Potion.hunger)) {
 
-                NeedStats.get((EntityPlayer) ev.entityLiving).addThirstExhaustion(-0.025F);
+                int amp = ev.entityLiving.getActivePotionEffect(Potion.hunger).getAmplifier();
+                for(int i = 0; i < amp + 1; i++)
+                    NeedStats.get((EntityPlayer) ev.entityLiving).addThirstExhaustion(-0.025F);
             }
         }
     }
