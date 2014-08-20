@@ -1,4 +1,6 @@
 .*
+# don't ignore the .gitignore
+!.gitignore
 
 *.class
 
