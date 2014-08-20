@@ -203,13 +203,7 @@ public class MCppGui extends GuiIngameForge {
                 // draw greenish background when poisoned
                 background = 27;
                 icon = 18;
-            } //else if(idx < stats.getThirstSaturationLevel())
-//                // draw full saturated background
-//                background = 9;
-//            else if(idx == stats.getThirstSaturationLevel())
-//                // draw half saturated background
-//                background = 18;
-
+            }
             // draw background
             drawTexturedModalRect(x, y, background, 0, 9, 9);
 
