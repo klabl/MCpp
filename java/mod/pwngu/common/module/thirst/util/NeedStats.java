@@ -1,5 +1,6 @@
 package mod.pwngu.common.module.thirst.util;
 
+import mod.pwngu.common.main.MCpp;
 import mod.pwngu.common.module.MCppModule;
 import mod.pwngu.common.module.survivial.util.PlayerSpeed;
 import mod.pwngu.common.util.MCppDamageSource;
@@ -11,11 +12,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.FoodStats;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
-import net.minecraft.util.FoodStats;
 
 public class NeedStats implements IExtendedEntityProperties {
 
@@ -102,15 +103,15 @@ public class NeedStats implements IExtendedEntityProperties {
         t++;
         if(t >= 20) {
 
-//            MCpp.log.inf("FoodLevel --------- " + foodStats.getFoodLevel());
-//            MCpp.log.inf("ThirstLevel ------- " + getThirstLevel());
-//            MCpp.log.inf("+++++++++++++++++++");
-//            MCpp.log.inf("FatLevel ---------- " + foodStats.getSaturationLevel());
-//            MCpp.log.inf("FatExhaustion ----- " + fatExhaustion);
-//            MCpp.log.inf("+++++++++++++++++++");
-//            MCpp.log.inf("FoodExhaustion ---- " + foodStats.foodExhaustionLevel);
-//            MCpp.log.inf("ThirstExhaustion -- " + thirstExhaustionLevel);
-//            MCpp.log.inf("###################");
+            MCpp.log.inf("FoodLevel --------- " + foodStats.getFoodLevel());
+            MCpp.log.inf("ThirstLevel ------- " + getThirstLevel());
+            MCpp.log.inf("+++++++++++++++++++");
+            MCpp.log.inf("FatLevel ---------- " + foodStats.getSaturationLevel());
+            MCpp.log.inf("FatExhaustion ----- " + fatExhaustion);
+            MCpp.log.inf("+++++++++++++++++++");
+            MCpp.log.inf("FoodExhaustion ---- " + foodStats.foodExhaustionLevel);
+            MCpp.log.inf("ThirstExhaustion -- " + thirstExhaustionLevel);
+            MCpp.log.inf("###################");
 
             t -= 20;
         }
@@ -161,7 +162,7 @@ public class NeedStats implements IExtendedEntityProperties {
             }
         }
 
-        if(player.shouldHeal() && foodStats.foodLevel >= 16 && this.getThirstLevel() >= 16 &&
+        if(player.shouldHeal() && foodStats.foodLevel >= 12 && this.getThirstLevel() >= 12 &&
                 player.worldObj.getGameRules().getGameRuleBooleanValue("naturalRegeneration")) {
 
             this.timer++;

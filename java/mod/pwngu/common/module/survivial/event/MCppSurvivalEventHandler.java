@@ -5,7 +5,6 @@ import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mod.pwngu.common.item.MCppItem;
-import mod.pwngu.common.module.thirst.util.NeedStats;
 import mod.pwngu.common.module.survivial.util.PlayerSpeed;
 import mod.pwngu.common.util.MCppPotion;
 import mod.pwngu.common.util.MCppPotionEffectFactory;
@@ -15,7 +14,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 
@@ -32,28 +30,6 @@ public class MCppSurvivalEventHandler {
     public void onPlayerInteract(PlayerInteractEvent ev) {
 
         if(!ev.entityPlayer.onGround && ev.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) ev.setCanceled(true);
-    }
-
-    @SubscribeEvent
-    public void onPlayerBlockBreakWithSpeed(PlayerEvent.BreakSpeed ev) {
-
-        if(ev.entityPlayer.getHeldItem() != null &&
-                ev.entityPlayer.getHeldItem().getItem().func_150893_a(ev.entityPlayer.getHeldItem(), ev.block) > 1.0F) {
-
-            ev.newSpeed = ev.originalSpeed * 0.5F;
-        } else {
-
-            ev.newSpeed = ev.originalSpeed * 0.2F;
-        }
-
-        NeedStats stats = NeedStats.get(ev.entityPlayer);
-        if(stats.getThirstLevel() <= 8 && stats.getThirstLevel() > 6) {
-
-            ev.newSpeed *= 0.75F;
-        } else if(stats.getThirstLevel() <= 4) {
-
-            ev.newSpeed *= 0.5F;
-        }
     }
 
     @SubscribeEvent

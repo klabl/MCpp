@@ -1,12 +1,8 @@
 package mod.pwngu.common.module.monster.event;
 
-import com.sun.tools.corba.se.idl.toJavaPortable.Skeleton;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import mod.pwngu.common.main.MCpp;
-import mod.pwngu.common.module.survivial.util.PlayerSpeed;
-import mod.pwngu.common.module.thirst.item.ItemDrink;
-import mod.pwngu.common.module.thirst.util.NeedStats;
 import mod.pwngu.common.util.MCppDamageSource;
 import mod.pwngu.common.util.MCppPotion;
 import mod.pwngu.common.util.MCppPotionEffectFactory;
@@ -15,19 +11,19 @@ import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.world.WorldEvent;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MCppMonsterEventHandler {
 
@@ -35,7 +31,7 @@ public class MCppMonsterEventHandler {
     private static final List<BiomeGenBase.SpawnListEntry> surfaceSpawns = new ArrayList<BiomeGenBase.SpawnListEntry>();
     private static final List<BiomeGenBase.SpawnListEntry> undergroundSpawns = new ArrayList<BiomeGenBase.SpawnListEntry>();
 
-    private static final BiomeGenBase.SpawnListEntry skeleton = new BiomeGenBase.SpawnListEntry(Skeleton.class, 250, 4, 4);
+    private static final BiomeGenBase.SpawnListEntry skeleton = new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 250, 4, 4);
     private static final BiomeGenBase.SpawnListEntry spiderBase = new BiomeGenBase.SpawnListEntry(EntitySpider.class, 100, 4, 4);
 
     static {
@@ -207,23 +203,26 @@ public class MCppMonsterEventHandler {
 
         if(ev.type != EnumCreatureType.monster || ev.world.provider.dimensionId != 0) return;
 
+        //TODO remove next line...
+        ev.list.clear();
+        //...
+
         Set<BiomeGenBase.SpawnListEntry> set = new HashSet<BiomeGenBase.SpawnListEntry>(ev.list);
 
-        if(set.contains(spiderBase)) // only remove all, if the set contains the base spawns
-            set.removeAll(baseSpawns);
+//        set.removeAll(baseSpawns);
 
         if(ev.y < 60 && !ev.world.canBlockSeeTheSky(ev.x, ev.y, ev.z)) {
 
             set.addAll(undergroundSpawns);
             if(ev.world.getBlock(ev.x, ev.y - 1, ev.z).equals(Blocks.stonebrick))
-                ev.list.add(skeleton);
+                set.add(skeleton);
 
         } else if(ev.y >= 60) {
 
             set.addAll(surfaceSpawns);
         }
 
-        ev.list.clear();
+//        ev.list.clear();
         ev.list.addAll(set);
         MCpp.log.inf("Spawning: " + getEntitiesFromSpawnList(ev.list));
     }

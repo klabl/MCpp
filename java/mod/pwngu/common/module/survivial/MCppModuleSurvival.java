@@ -3,6 +3,7 @@ package mod.pwngu.common.module.survivial;
 import cpw.mods.fml.common.registry.GameRegistry;
 import mod.pwngu.common.item.MCppItem;
 import mod.pwngu.common.module.MCppModule;
+import mod.pwngu.common.module.survivial.event.MCppBlockBreakHandler;
 import mod.pwngu.common.module.survivial.event.MCppSurvivalEventHandler;
 import mod.pwngu.common.module.thirst.util.NeedStats;
 import net.minecraft.init.Blocks;
@@ -50,6 +51,7 @@ public class MCppModuleSurvival extends MCppModule {
     public void registerEventHandler() {
 
         MinecraftForge.EVENT_BUS.register(new MCppSurvivalEventHandler());
+        MinecraftForge.EVENT_BUS.register(new MCppBlockBreakHandler());
     }
 
     @Override

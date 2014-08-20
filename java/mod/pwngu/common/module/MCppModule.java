@@ -21,7 +21,7 @@ public abstract class MCppModule {
     public static final MCppModule ORE = new MCppModuleOre(true);
     public static final MCppModule THIRST = new MCppModuleThirst(true);
     public static final MCppModule MONSTER = new MCppModuleMonster(true);
-    public static final MCppModule SURVIVAL = new MCppModuleSurvival(true);
+    public static final MCppModule SURVIVAL = new MCppModuleSurvival(false);
     public static final MCppModule IC2 = new MCppModuleIC2(true);
 
     public static enum Phase {
