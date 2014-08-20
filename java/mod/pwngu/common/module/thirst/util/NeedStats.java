@@ -44,13 +44,9 @@ public class NeedStats implements IExtendedEntityProperties {
     private int timer;
     private float thirstExhaustionLevel;
 
-    private int fatExhaustion;
-
     public NeedStats(EntityPlayer player) {
 
         this.player = player;
-
-        this.fatExhaustion = 0;
 
         player.getDataWatcher().addObject(THIRST_LEVEL_WATCHER, 20);
         player.getDataWatcher().addObject(FAT_LEVEL_WATCHER, 0.0F);
@@ -81,8 +77,6 @@ public class NeedStats implements IExtendedEntityProperties {
                     stats.getFoodLevel()));
         else
             setFatLevel(Math.min(getFatLevel() + fatLevel * 0.1F, stats.getFoodLevel()));
-
-        if(fatLevel > 0.0F) resetFatExhaustion();
     }
 
     public void addThirstExhaustion(float exhaustion) {
@@ -106,8 +100,7 @@ public class NeedStats implements IExtendedEntityProperties {
             MCpp.log.inf("FoodLevel --------- " + foodStats.getFoodLevel());
             MCpp.log.inf("ThirstLevel ------- " + getThirstLevel());
             MCpp.log.inf("+++++++++++++++++++");
-            MCpp.log.inf("FatLevel ---------- " + foodStats.getSaturationLevel());
-            MCpp.log.inf("FatExhaustion ----- " + fatExhaustion);
+            MCpp.log.inf("FatLevel ---------- " + getFatLevel());
             MCpp.log.inf("+++++++++++++++++++");
             MCpp.log.inf("FoodExhaustion ---- " + foodStats.foodExhaustionLevel);
             MCpp.log.inf("ThirstExhaustion -- " + thirstExhaustionLevel);
@@ -124,11 +117,7 @@ public class NeedStats implements IExtendedEntityProperties {
 
                 if(MathHelper.ceiling_float_int(getFatLevel()) >= foodStats.foodLevel) {
 
-                    if(++fatExhaustion >= 3) {
-
-                        fatExhaustion -= 3;
-                        setFatLevel(getFatLevel() - 1.0F);
-                    }
+                    setFatLevel(getFatLevel() - 0.25F);
                 } else {
 
                     foodStats.foodLevel = Math.max(foodStats.foodLevel - 1, 0);
@@ -234,11 +223,6 @@ public class NeedStats implements IExtendedEntityProperties {
     public boolean needToDrink() {
 
         return getThirstLevel() < 20;
-    }
-
-    public void resetFatExhaustion() {
-
-        this.fatExhaustion = 0;
     }
 
     private void setThirstLevel(int level) {
