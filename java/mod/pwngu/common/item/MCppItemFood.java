@@ -1,13 +1,13 @@
 package mod.pwngu.common.item;
 
-import static net.minecraft.init.Items.*;
-
 import mod.pwngu.common.main.MCpp;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.potion.Potion;
 
 import java.util.HashMap;
+
+import static net.minecraft.init.Items.*;
 
 public class MCppItemFood extends ItemFood {
 
@@ -18,19 +18,19 @@ public class MCppItemFood extends ItemFood {
         vanillaFoods.put(apple, new MCppItemFood(2, 0.0F, false));
         vanillaFoods.put(baked_potato, new MCppItemFood(3, 0.2F, false));
         vanillaFoods.put(bread, new MCppItemFood(4, 0.0F, false));
-        vanillaFoods.put(cake, new MCppItemFood(1, 1.0F, true));
+        vanillaFoods.put(cake, new MCppItemFood(1, 0.5F, true));
         vanillaFoods.put(carrot, new MCppItemFood(1, 0.0F, false));
         vanillaFoods.put(cooked_chicken, new MCppItemFood(4, 0.2F, false));
         vanillaFoods.put(cooked_porkchop, new MCppItemFood(5, 0.3F, false));
         vanillaFoods.put(cooked_beef, new MCppItemFood(5, 0.3F, false));
-        vanillaFoods.put(cookie, new MCppItemFood(1, 1.0F, true));
+        vanillaFoods.put(cookie, new MCppItemFood(1, 0.5F, true));
         vanillaFoods.put(golden_apple, new MCppItemFood(2, 0.0F, false));
         vanillaFoods.put(golden_carrot, new MCppItemFood(1, 0.0F, false));
         vanillaFoods.put(melon, new MCppItemFood(1, 0.0F, false));
         vanillaFoods.put(mushroom_stew, new MCppItemFood(4, 0.1F, false));
         vanillaFoods.put(poisonous_potato, new MCppItemFood(1, 0.0F, false));
         vanillaFoods.put(potato, new MCppItemFood(1, 0.0F, false).setPotionEffect(Potion.poison.id, 5, 0, 0.3F));
-        vanillaFoods.put(pumpkin_pie, new MCppItemFood(3, 1.0F, true));
+        vanillaFoods.put(pumpkin_pie, new MCppItemFood(3, 0.5F, true));
         vanillaFoods.put(beef, new MCppItemFood(4, 0.2F, false).setPotionEffect(Potion.hunger.id, 30, 0, 0.3F));
         vanillaFoods.put(chicken, new MCppItemFood(3, 0.1F, false).setPotionEffect(Potion.hunger.id, 30, 0, 0.5F));
         vanillaFoods.put(porkchop, new MCppItemFood(4, 0.2F, false).setPotionEffect(Potion.hunger.id, 30, 0, 0.3F));
