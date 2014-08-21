@@ -2,7 +2,7 @@ package mod.pwngu.common.module.monster.event;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
-import mod.pwngu.common.main.MCpp;
+import mod.pwngu.common.module.survivial.util.PlayerSpeed;
 import mod.pwngu.common.util.MCppDamageSource;
 import mod.pwngu.common.util.MCppPotion;
 import mod.pwngu.common.util.MCppPotionEffectFactory;
@@ -27,22 +27,22 @@ import java.util.Set;
 
 public class MCppMonsterEventHandler {
 
-    private static final List<BiomeGenBase.SpawnListEntry> baseSpawns = new ArrayList<BiomeGenBase.SpawnListEntry>();
+//    private static final List<BiomeGenBase.SpawnListEntry> baseSpawns = new ArrayList<BiomeGenBase.SpawnListEntry>();
     private static final List<BiomeGenBase.SpawnListEntry> surfaceSpawns = new ArrayList<BiomeGenBase.SpawnListEntry>();
     private static final List<BiomeGenBase.SpawnListEntry> undergroundSpawns = new ArrayList<BiomeGenBase.SpawnListEntry>();
 
     private static final BiomeGenBase.SpawnListEntry skeleton = new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 250, 4, 4);
-    private static final BiomeGenBase.SpawnListEntry spiderBase = new BiomeGenBase.SpawnListEntry(EntitySpider.class, 100, 4, 4);
+//    private static final BiomeGenBase.SpawnListEntry spiderBase = new BiomeGenBase.SpawnListEntry(EntitySpider.class, 100, 4, 4);
 
     static {
 
-        baseSpawns.add(spiderBase);
-        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntityZombie.class, 100, 4, 4));
-        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 100, 4, 4));
-        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntityCreeper.class, 100, 4, 4));
-        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntitySlime.class, 100, 4, 4));
-        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntityEnderman.class, 10, 1, 4));
-        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntityWitch.class, 5, 1, 1));
+//        baseSpawns.add(spiderBase);
+//        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntityZombie.class, 100, 4, 4));
+//        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 100, 4, 4));
+//        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntityCreeper.class, 100, 4, 4));
+//        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntitySlime.class, 100, 4, 4));
+//        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntityEnderman.class, 10, 1, 4));
+//        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntityWitch.class, 5, 1, 1));
 
         surfaceSpawns.add(new BiomeGenBase.SpawnListEntry(EntityZombie.class, 400, 4, 6));
         surfaceSpawns.add(new BiomeGenBase.SpawnListEntry(EntitySpider.class, 80, 4, 4));
@@ -184,7 +184,9 @@ public class MCppMonsterEventHandler {
                     } else if(zombiefication.getDuration() <= 1200) { // add confusion
 
                         ev.entityLiving.addPotionEffect(MCppPotionEffectFactory.createPotionEffectConfusion(160));
+                        PlayerSpeed.get((EntityPlayer) ev.entityLiving).updateMultiplier("zombiefication", 0.6F);
                     }
+                    PlayerSpeed.get((EntityPlayer) ev.entityLiving).updateMultiplier("zombiefication", 0.9F);
                 } else if(zombiefication.getDuration() <= 10) { // increase zombiefication amplifier
 
                     ev.entityLiving.removePotionEffect(MCppPotion.ZOMBIEFICATION.id);
@@ -198,8 +200,8 @@ public class MCppMonsterEventHandler {
     @SubscribeEvent
     public void onSpawnCheck(WorldEvent.PotentialSpawns ev) {
 
-        MCpp.log.inf("checking spawn for block (x:" + ev.x + " y:" + ev.y + " z:" + ev.z + ")");
-        MCpp.log.inf("block is: " + ev.world.getBlock(ev.x, ev.y, ev.z));
+//        MCpp.log.inf("checking spawn for block (x:" + ev.x + " y:" + ev.y + " z:" + ev.z + ")");
+//        MCpp.log.inf("block is: " + ev.world.getBlock(ev.x, ev.y, ev.z));
 
         if(ev.type != EnumCreatureType.monster || ev.world.provider.dimensionId != 0) return;
 
@@ -224,16 +226,16 @@ public class MCppMonsterEventHandler {
 
 //        ev.list.clear();
         ev.list.addAll(set);
-        MCpp.log.inf("Spawning: " + getEntitiesFromSpawnList(ev.list));
+//        MCpp.log.inf("Spawning: " + getEntitiesFromSpawnList(ev.list));
     }
 
-    private String getEntitiesFromSpawnList(List<BiomeGenBase.SpawnListEntry> list) {
-
-        StringBuilder sb = new StringBuilder().append("{");
-        for(BiomeGenBase.SpawnListEntry entry : list) {
-
-            sb.append(entry.entityClass.getSimpleName()).append(":").append(entry.itemWeight).append(", ");
-        }
-        return sb.append("}").toString();
-    }
+//    private String getEntitiesFromSpawnList(List<BiomeGenBase.SpawnListEntry> list) {
+//
+//        StringBuilder sb = new StringBuilder().append("{");
+//        for(BiomeGenBase.SpawnListEntry entry : list) {
+//
+//            sb.append(entry.entityClass.getSimpleName()).append(":").append(entry.itemWeight).append(", ");
+//        }
+//        return sb.append("}").toString();
+//    }
 }
