@@ -6,6 +6,7 @@ import cpw.mods.fml.common.gameevent.TickEvent;
 import mod.pwngu.common.item.MCppItem;
 import mod.pwngu.common.item.MCppItemFood;
 import mod.pwngu.common.main.MCpp;
+import mod.pwngu.common.module.survivial.util.PlayerSpeed;
 import mod.pwngu.common.module.thirst.item.ItemDrink;
 import mod.pwngu.common.module.thirst.util.NeedStats;
 import mod.pwngu.common.util.MCppPotion;
@@ -25,11 +26,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
 import net.minecraftforge.event.world.BlockEvent;
 
-import java.util.HashSet;
-
 public class MCppThirstEventHandler {
-
-    public static final HashSet<EntityPlayer> playerBuffer = new HashSet<EntityPlayer>();
 
     private int drinkingTickTimer = 0;
 
@@ -125,7 +122,7 @@ public class MCppThirstEventHandler {
         if(ev.entity instanceof EntityPlayer) {
 
             NeedStats.register((EntityPlayer) ev.entity);
-            playerBuffer.add((EntityPlayer) ev.entity);
+            PlayerSpeed.register((EntityPlayer) ev.entity);
         }
     }
 

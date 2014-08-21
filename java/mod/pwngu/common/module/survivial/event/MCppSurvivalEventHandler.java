@@ -50,10 +50,6 @@ public class MCppSurvivalEventHandler {
     @SubscribeEvent
     public void onEntityConstruction(EntityEvent.EntityConstructing ev) {
 
-        if(ev.entity instanceof EntityPlayer) {
-
-            PlayerSpeed.register((EntityPlayer) ev.entity);
-        }
     }
 
     @SubscribeEvent
