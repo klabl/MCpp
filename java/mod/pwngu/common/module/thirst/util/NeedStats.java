@@ -144,7 +144,7 @@ public class NeedStats implements IExtendedEntityProperties {
             if (player.isSprinting()) player.setSprinting(false);
         } else {
 
-            PlayerSpeed.get(player).updateMultiplier("thirst", 1.0F);
+            PlayerSpeed.get(player).removeMultiplier("thirst");
         }
 
         if(player.shouldHeal() && foodStats.foodLevel >= 12 && this.getThirstLevel() >= 12 &&

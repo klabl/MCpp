@@ -185,13 +185,19 @@ public class MCppMonsterEventHandler {
 
                         ev.entityLiving.addPotionEffect(MCppPotionEffectFactory.createPotionEffectConfusion(160));
                         PlayerSpeed.get((EntityPlayer) ev.entityLiving).updateMultiplier("zombiefication", 0.6F);
-                    }
-                    PlayerSpeed.get((EntityPlayer) ev.entityLiving).updateMultiplier("zombiefication", 0.9F);
-                } else if(zombiefication.getDuration() <= 10) { // increase zombiefication amplifier
+                    } else {
 
-                    ev.entityLiving.removePotionEffect(MCppPotion.ZOMBIEFICATION.id);
-                    ev.entityLiving.addPotionEffect(MCppPotionEffectFactory.createPotionEffectZombiefication(
-                            24000, zombiefication.getAmplifier() + 1));
+                        PlayerSpeed.get((EntityPlayer) ev.entityLiving).updateMultiplier("zombiefication", 0.9F);
+                    }
+                } else {
+
+                    if(zombiefication.getDuration() <= 10) { // increase zombiefication amplifier
+
+                        ev.entityLiving.removePotionEffect(MCppPotion.ZOMBIEFICATION.id);
+                        ev.entityLiving.addPotionEffect(MCppPotionEffectFactory.createPotionEffectZombiefication(
+                                24000, zombiefication.getAmplifier() + 1));
+                    }
+                    PlayerSpeed.get((EntityPlayer) ev.entityLiving).removeMultiplier("zombiefication");
                 }
             }
         }
