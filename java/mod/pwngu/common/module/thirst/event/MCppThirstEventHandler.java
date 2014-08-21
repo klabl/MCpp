@@ -33,41 +33,41 @@ public class MCppThirstEventHandler {
     @SubscribeEvent
     public void onPlayerTick(TickEvent.PlayerTickEvent ev) {
 
-        if(ev.phase == TickEvent.Phase.END && !ev.player.worldObj.isRemote) {
+        if(ev.phase != TickEvent.Phase.END) return;
+        if(ev.player.worldObj.isRemote) return;
 
-            ev.player.addExhaustion(0.00166F); // about 2 exhaustion per minute -> -1 point per 4 minutes w/o reductions
+        ev.player.addExhaustion(0.00333F); // about 4 exhaustion per minute -> -1 point per minute w/o reductions
 
-            if(ev.player.isSneaking() && ev.player.isInWater()) {
+        if(ev.player.isSneaking() && ev.player.isInWater()) {
 
-                drinkingTickTimer++;
+            drinkingTickTimer++;
 
-                if(drinkingTickTimer >= 20) {
+            if(drinkingTickTimer >= 20) {
 
-                    if(NeedStats.get(ev.player).needToDrink()) {
+                if(NeedStats.get(ev.player).needToDrink() && !ev.player.isPotionActive(MCppPotion.THIRST)) {
 
-                        NeedStats.get(ev.player).addThirstStats(1);
-                        //TODO play drinking sound
-                        if (ev.player.getRNG().nextFloat() < 0.33F && !ev.player.isPotionActive(MCppPotion.THIRST)) {
+                    NeedStats.get(ev.player).addThirstStats(1);
+                    //TODO play drinking sound
+                    if (ev.player.getRNG().nextFloat() < 0.33F && !ev.player.isPotionActive(MCppPotion.THIRST)) {
 
-                            ev.player.addPotionEffect(new PotionEffect(MCppPotion.THIRST.id, 160));
-                        }
+                        ev.player.addPotionEffect(new PotionEffect(MCppPotion.THIRST.id, 300, 1));
                     }
-                    drinkingTickTimer = 0;
                 }
-            } else drinkingTickTimer = 0;
+                drinkingTickTimer = 0;
+            }
+        } else drinkingTickTimer = 0;
 
-            ItemStack stack = ev.player.getItemInUse();
+        ItemStack stack = ev.player.getItemInUse();
 
-            if(stack != null && ItemDrink.vanillaDrinks.containsKey(stack.getItem()) && ev.player.getItemInUseDuration() == (stack.getMaxItemUseDuration() - 1)) {
+        if(stack != null && ItemDrink.vanillaDrinks.containsKey(stack.getItem()) && ev.player.getItemInUseDuration() == (stack.getMaxItemUseDuration() - 1)) {
 
-                ItemDrink drink = ItemDrink.getDrink(stack.getItem());
-                if (drink != null) {
+            ItemDrink drink = ItemDrink.getDrink(stack.getItem());
+            if (drink != null) {
 
-                    NeedStats.get(ev.player).addThirstStats(drink.getThirstHealAmount(stack));
-                    if (stack.getItem() instanceof ItemPotion && stack.getItemDamage() == 0 && ev.player.getRNG().nextFloat() <= 0.5F) {
+                NeedStats.get(ev.player).addThirstStats(drink.getThirstHealAmount(stack));
+                if (stack.getItem() instanceof ItemPotion && stack.getItemDamage() == 0 && ev.player.getRNG().nextFloat() <= 0.5F) {
 
-                        ev.player.addPotionEffect(new PotionEffect(MCppPotion.THIRST.id, 600));
-                    }
+                    ev.player.addPotionEffect(new PotionEffect(MCppPotion.THIRST.id, 600));
                 }
             }
         }
@@ -199,7 +199,7 @@ public class MCppThirstEventHandler {
 
         NeedStats.get(ev.entityPlayer).addThirstExhaustion(ev.exhaustion);
 
-        ev.exhaustion *= (float) Math.pow(1.1, ev.entityPlayer.getFoodStats().getSaturationLevel()) * 0.33F;
+        ev.exhaustion *= 0.33F;
     }
 
     @SubscribeEvent
