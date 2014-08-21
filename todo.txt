@@ -1,0 +1,37 @@
+Add Module BC:
+    Replace the Diamond Pickaxe in the Quarry recipe to a diamond Drill,
+        when IC2 is installed
+
+Add Module MaB:
+    Make the stamina bar render behind the exp bar
+    Change the menu buttons, so they no longer interfere with potion effects
+
+Add Module Physics:
+    Make Blocks fall down like sand/gravel, when a explosion happens nearby,
+        or, with a smaller chance, when you destroy a nearby block
+    Make flying Blocks fall down
+
+Add Module Torches:
+    ...
+
+IC2:
+    Add industrial way of purifying water
+
+Monster:
+    Create Skeleton melee Warrior
+    Change all dungeon spawners to skeleton spawners,
+        which spawn ranged and melee skeletons
+
+Ore:
+    Generate ores in much bigger veins
+    Rebalance ore spawn rates
+
+Survival:
+    Add Hatchets and Spades
+    Reduce base break speed by 50%
+    Reduce break speed on wrong blocks by 90%
+    Make some blocks only harvestable when destroyed by proper tool.
+
+Thirst:
+    Limit maximum bow draw depending on hunger level
+    Add some more ways to recover thirst
