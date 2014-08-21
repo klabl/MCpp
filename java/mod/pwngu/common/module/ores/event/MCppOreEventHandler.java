@@ -18,35 +18,34 @@ public class MCppOreEventHandler {
 
         if(ev.drops.isEmpty() || !(ev.drops.get(0).getItem() instanceof ItemBlock) || ev.isSilkTouching) return;
 
-//        MCpp.log.inf(ev.drops);
+        String name = ev.block.getUnlocalizedName().toLowerCase();
+        MCpp.log.inf(name);
 
-        String name = ev.block.getUnlocalizedName();
-
-        if(name.endsWith("oreIron")) {
+        if(name.endsWith("oreiron")) {
 
             fillLootList(ev.drops, MCppItem.IRON_PEBBLE, fortuneRandomCount(6, ev.fortuneLevel, ev.world.rand));
             ev.dropChance = 1.0f;
-        } else if(name.endsWith("oreGold")) {
+        } else if(name.endsWith("oregold")) {
 
             fillLootList(ev.drops, MCppItem.GOLD_PEBBLE, fortuneRandomCount(6, ev.fortuneLevel, ev.world.rand));
             ev.dropChance = 1.0f;
-        } else if(name.endsWith("oreCopper")) {
+        } else if(name.endsWith("orecopper")) {
 
             fillLootList(ev.drops, MCppItem.COPPER_PEBBLE, fortuneRandomCount(6, ev.fortuneLevel, ev.world.rand));
             ev.dropChance = 1.0f;
-        } else if(name.endsWith("oreTin")) {
+        } else if(name.endsWith("oretin")) {
 
             fillLootList(ev.drops, MCppItem.TIN_PEBBLE, fortuneRandomCount(6, ev.fortuneLevel, ev.world.rand));
             ev.dropChance = 1.0f;
-        } else if(name.endsWith("oreLead")) {
+        } else if(name.endsWith("orelead")) {
 
             fillLootList(ev.drops, MCppItem.LEAD_PEBBLE, fortuneRandomCount(6, ev.fortuneLevel, ev.world.rand));
             ev.dropChance = 1.0f;
-        } else if(name.endsWith("oreUranium")) {
+        } else if(name.endsWith("oreuran")) {
 
             fillLootList(ev.drops, MCppItem.URANIUM_PEBBLE, fortuneRandomCount(6, ev.fortuneLevel, ev.world.rand));
             ev.dropChance = 1.0f;
-        } else if(name.endsWith("oreSilver")) {
+        } else if(name.endsWith("oresilver")) {
 
             fillLootList(ev.drops, MCppItem.SILVER_PEBBLE, fortuneRandomCount(6, ev.fortuneLevel, ev.world.rand));
             ev.dropChance = 1.0f;
