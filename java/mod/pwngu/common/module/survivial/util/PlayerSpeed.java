@@ -47,14 +47,33 @@ public class PlayerSpeed implements IExtendedEntityProperties {
 
         multipliers.put(name, multiplier);
 
-        float walkspeed = BASE_SPEED;
-        for(Float mul : multipliers.values()) walkspeed *= mul;
-        player.getDataWatcher().updateObject(MOVESPEED_WATCHER, walkspeed);
+        updateWalkspeed();
+
+        MCpp.log.inf("###");
+        for(String s : multipliers.keySet()) {
+
+            MCpp.log.inf(s + ": " + multipliers.get(s));
+        }
+    }
+
+    public void removeMultiplier(String name) {
+
+        if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) return;
+
+        if(multipliers.remove(name) != null) updateWalkspeed();
+
     }
 
     public float getWalkSpeed() {
 
         return player.getDataWatcher().getWatchableObjectFloat(MOVESPEED_WATCHER);
+    }
+
+    private void updateWalkspeed() {
+
+        float walkspeed = BASE_SPEED;
+        for(Float mul : multipliers.values()) walkspeed *= mul;
+        player.getDataWatcher().updateObject(MOVESPEED_WATCHER, walkspeed);
     }
 
     @SideOnly(Side.CLIENT)
