@@ -4,9 +4,6 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.client.Minecraft;
 
-/**
- * Created by klaus on 17.07.14.
- */
 public class MCppRenderEventHandler {
 
     private Minecraft mc;
