@@ -133,12 +133,21 @@ public class NeedStats implements IExtendedEntityProperties {
             }
         }
 
+        if(getFatLevel() >= 12.0F && getFatLevel() < 16.0F) {
 
-        int thirstLevel = getThirstLevel();
-        if (thirstLevel <= 8 && thirstLevel > 4) {
+            PlayerSpeed.get(player).updateMultiplier("fat", 0.75F);
+        } else if(getFatLevel() >= 16.0F) {
+
+            PlayerSpeed.get(player).updateMultiplier("fat", 0.5F);
+        } else {
+
+            PlayerSpeed.get(player).removeMultiplier("fat");
+        }
+
+        if (getThirstLevel() <= 8 && getThirstLevel() > 4) {
 
             PlayerSpeed.get(player).updateMultiplier("thirst", 0.75F);
-        } else if (thirstLevel <= 4) {
+        } else if (getThirstLevel() <= 4) {
 
             PlayerSpeed.get(player).updateMultiplier("thirst", 0.5F);
         } else {
@@ -146,8 +155,9 @@ public class NeedStats implements IExtendedEntityProperties {
             PlayerSpeed.get(player).removeMultiplier("thirst");
         }
 
-        if(thirstLevel <= 6) {
+        if(getThirstLevel() <= 6) {
 
+            //TODO do something that works...
             if (player.isSprinting()) player.setSprinting(false);
         }
 
