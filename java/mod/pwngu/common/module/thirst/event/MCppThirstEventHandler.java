@@ -184,7 +184,7 @@ public class MCppThirstEventHandler {
 
             int foodLevel = ((EntityPlayer) ev.source.getSourceOfDamage()).getFoodStats().getFoodLevel();
 
-            if(foodLevel <= 8 && foodLevel > 6) {
+            if(foodLevel <= 8 && foodLevel > 4) {
 
                 ev.ammount *= 0.75F;
             } else if(foodLevel <= 4) {
