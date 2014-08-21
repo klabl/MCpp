@@ -1,6 +1,5 @@
 package mod.pwngu.common.module.thirst.util;
 
-import mod.pwngu.common.main.MCpp;
 import mod.pwngu.common.module.survivial.util.PlayerSpeed;
 import mod.pwngu.common.util.MCppDamageSource;
 import mod.pwngu.common.util.MCppPotion;
@@ -19,7 +18,7 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 
 public class NeedStats implements IExtendedEntityProperties {
 
-    private int t = 0;
+//    private int t = 0;
 
     public static final String PROPERTY_NAME = "NeedStats";
 
@@ -93,20 +92,20 @@ public class NeedStats implements IExtendedEntityProperties {
 
         FoodStats foodStats = player.getFoodStats();
 
-        t++;
-        if(t >= 20) {
-
-            MCpp.log.inf("FoodLevel --------- " + foodStats.getFoodLevel());
-            MCpp.log.inf("ThirstLevel ------- " + getThirstLevel());
-            MCpp.log.inf("+++++++++++++++++++");
-            MCpp.log.inf("FatLevel ---------- " + getFatLevel());
-            MCpp.log.inf("+++++++++++++++++++");
-            MCpp.log.inf("FoodExhaustion ---- " + foodStats.foodExhaustionLevel);
-            MCpp.log.inf("ThirstExhaustion -- " + thirstExhaustionLevel);
-            MCpp.log.inf("###################");
-
-            t -= 20;
-        }
+//        t++;
+//        if(t >= 20) {
+//
+//            MCpp.log.inf("FoodLevel --------- " + foodStats.getFoodLevel());
+//            MCpp.log.inf("ThirstLevel ------- " + getThirstLevel());
+//            MCpp.log.inf("+++++++++++++++++++");
+//            MCpp.log.inf("FatLevel ---------- " + getFatLevel());
+//            MCpp.log.inf("+++++++++++++++++++");
+//            MCpp.log.inf("FoodExhaustion ---- " + foodStats.foodExhaustionLevel);
+//            MCpp.log.inf("ThirstExhaustion -- " + thirstExhaustionLevel);
+//            MCpp.log.inf("###################");
+//
+//            t -= 20;
+//        }
 
         if (foodStats.foodExhaustionLevel > 4.0F) {
 
