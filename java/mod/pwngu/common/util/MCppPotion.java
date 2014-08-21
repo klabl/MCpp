@@ -36,7 +36,7 @@ public class MCppPotion extends Potion {
         }
     }
 
-    public static final Potion ZOMBIEFICATION = new MCppPotion(32, true, 5797459).setIconIndex(1, 1).setPotionName("potion.zombiefication");
+    public static final Potion ZOMBIEFICATION = new MCppPotion(32, true, 0).setIconIndex(1, 1).setPotionName("potion.zombiefication");
     public static final Potion THIRST = new MCppPotion(33, true, 5797459).setIconIndex(1, 1).setPotionName("potion.thirst");
     public static final Potion WOUNDED = new MCppPotion(34, true, 0).setIconIndex(6, 0).setPotionName("potion.wounded");
 
