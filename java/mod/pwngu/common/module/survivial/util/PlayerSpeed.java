@@ -17,7 +17,7 @@ public class PlayerSpeed implements IExtendedEntityProperties {
     public static final String PROPERTY_NAME = "PlayerMovementSpeed";
     public static final float BASE_SPEED = 0.1F;
 
-    private static final int MOVESPEED_WATCHER = 25;
+    private static final int MOVESPEED_WATCHER = 22;
 
     private HashMap<String, Float> multipliers;
 
