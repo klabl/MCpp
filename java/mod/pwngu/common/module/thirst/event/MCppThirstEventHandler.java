@@ -105,8 +105,7 @@ public class MCppThirstEventHandler {
 
                 if(stack != null) {
 
-                    if(stack.getItem().equals(Items.glass_bottle)) stack.stackSize++;
-                    else if(stack.getItem().equals(MCppItem.FILTER)) {
+                    if(stack.getItem().equals(MCppItem.FILTER)) {
 
                         stack.setItemDamage(stack.getItemDamage() + 1);
                         if(stack.getItemDamage() < stack.getItem().getMaxDamage()) stack.stackSize++;

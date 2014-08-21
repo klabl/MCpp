@@ -15,8 +15,6 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 import static mod.pwngu.common.item.MCppItem.*;
-import static mod.pwngu.common.item.MCppItem.FILTER;
-import static mod.pwngu.common.item.MCppItem.HOT_TEA;
 
 public class MCppModuleThirst extends MCppModule {
 
@@ -45,6 +43,7 @@ public class MCppModuleThirst extends MCppModule {
         //Filter
 
         GameRegistry.registerItem(FILTER, FILTER.name.itemName);
+        GameRegistry.registerItem(FILTER_NET, FILTER_NET.name.itemName);
     }
 
     @Override
@@ -57,11 +56,14 @@ public class MCppModuleThirst extends MCppModule {
 
         //Drinks
 
-        GameRegistry.addRecipe(new ItemStack(MCppItem.FILTER, 1, 0), "#s#", "#g#", "###",
-                '#', new ItemStack(Blocks.wooden_slab, 1, OreDictionary.WILDCARD_VALUE), 's', new ItemStack(Blocks.sand), 'g', new ItemStack(Blocks.gravel));
+        GameRegistry.addRecipe(new ItemStack(FILTER_NET), "sss", "sss", "sss",
+                's', new ItemStack(Items.string));
+
+        GameRegistry.addRecipe(new ItemStack(MCppItem.FILTER, 1, 0), "sss", "sns", "sss",
+                'n', new ItemStack(MCppItem.FILTER_NET), 's', new ItemStack(Items.stick));
 
         GameRegistry.addShapelessRecipe(new ItemStack(MCppItem.CLEAN_WATER_BOTTLE),
-                new ItemStack(Items.glass_bottle), new ItemStack(Items.potionitem, 1, 0), new ItemStack(MCppItem.FILTER, 1, OreDictionary.WILDCARD_VALUE));
+                new ItemStack(Items.potionitem, 1, 0), new ItemStack(MCppItem.FILTER, 1, OreDictionary.WILDCARD_VALUE));
 
         GameRegistry.addShapelessRecipe(new ItemStack(MCppItem.APPLE_JUICE),
                 new ItemStack(Items.glass_bottle), new ItemStack(Items.apple));
