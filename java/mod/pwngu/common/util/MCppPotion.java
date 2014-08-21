@@ -1,5 +1,6 @@
 package mod.pwngu.common.util;
 
+import mod.pwngu.common.main.MCpp;
 import net.minecraft.potion.Potion;
 
 import java.lang.reflect.Field;
@@ -29,16 +30,15 @@ public class MCppPotion extends Potion {
                 }
             } catch (Exception ex) {
 
-                System.err.println("Severe error, during load of MCpp");
+                MCpp.log.ftl("Severe error, during load of MCpp");
                 throw new RuntimeException(ex);
             }
         }
     }
 
     public static final Potion ZOMBIEFICATION = new MCppPotion(32, true, 5797459).setIconIndex(1, 1).setPotionName("potion.zombiefication");
-    public static final Potion THIRST = new MCppPotion(33, true, 8171462).setIconIndex(1, 1).setPotionName("potion.thirst");
+    public static final Potion THIRST = new MCppPotion(33, true, 5797459).setIconIndex(1, 1).setPotionName("potion.thirst");
     public static final Potion WOUNDED = new MCppPotion(34, true, 0).setIconIndex(6, 0).setPotionName("potion.wounded");
-//    public static final Potion POISON_IMMUNITY = new MCppPotion(35, false, )
 
     public MCppPotion(int id, boolean isBadEffect, int potionColor) {
 
