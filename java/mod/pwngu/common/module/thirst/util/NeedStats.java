@@ -79,8 +79,6 @@ public class NeedStats implements IExtendedEntityProperties {
 
     public void addThirstExhaustion(float exhaustion) {
 
-        exhaustion *= 0.5F;
-
         this.thirstExhaustionLevel = Math.min(this.thirstExhaustionLevel + (exhaustion * getExhaustionModifier()), 40.0F);
     }
 
@@ -107,9 +105,9 @@ public class NeedStats implements IExtendedEntityProperties {
 //            t -= 20;
 //        }
 
-        if (foodStats.foodExhaustionLevel > 4.0F) {
+        if (foodStats.foodExhaustionLevel > 14.0F) {
 
-            foodStats.foodExhaustionLevel -= 4.0F;
+            foodStats.foodExhaustionLevel -= 14.0F;
 
             if (enumdifficulty != EnumDifficulty.PEACEFUL) {
 
@@ -123,9 +121,9 @@ public class NeedStats implements IExtendedEntityProperties {
             }
         }
 
-        if (this.thirstExhaustionLevel > 4.0F) {
+        if (this.thirstExhaustionLevel > 8.0F) {
 
-            this.thirstExhaustionLevel -= 4.0F;
+            this.thirstExhaustionLevel -= 8.0F;
 
             if (enumdifficulty != EnumDifficulty.PEACEFUL) {
 

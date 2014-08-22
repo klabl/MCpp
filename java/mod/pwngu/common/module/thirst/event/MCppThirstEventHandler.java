@@ -36,7 +36,7 @@ public class MCppThirstEventHandler {
         if(ev.phase != TickEvent.Phase.END) return;
         if(ev.player.worldObj.isRemote) return;
 
-        ev.player.addExhaustion(0.00333F); // about 4 exhaustion per minute -> -1 point per minute w/o reductions
+        ev.player.addExhaustion(0.00333F); // about 4 exhaustion per minute
 
         if(ev.player.isSneaking() && ev.player.isInWater()) {
 
@@ -197,8 +197,6 @@ public class MCppThirstEventHandler {
     public void onFoodExhaustion(MCppPlayerEvent.FoodExhaustion ev) {
 
         NeedStats.get(ev.entityPlayer).addThirstExhaustion(ev.exhaustion);
-
-        ev.exhaustion *= 0.33F;
     }
 
     @SubscribeEvent
