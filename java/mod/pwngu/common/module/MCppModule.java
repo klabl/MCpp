@@ -70,6 +70,12 @@ public abstract class MCppModule {
         this(name, enable, Phase.PRE_INIT, new MCppModule[]{}, null);
     }
 
+    protected MCppModule(String name, boolean enable, Phase phase) {
+
+
+        this(name, enable, phase, new MCppModule[]{}, null);
+    }
+
     protected MCppModule(String name, boolean enable, Phase phase, MCppModule[] dependants, String modDependant) {
 
         this.name = name;

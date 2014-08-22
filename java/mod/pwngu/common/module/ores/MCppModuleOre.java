@@ -19,7 +19,7 @@ public class MCppModuleOre extends MCppModule {
 
     public MCppModuleOre(boolean enable) {
 
-        super("ORE", enable);
+        super("ORE", enable, Phase.POST_INIT);
     }
 
     @Override
