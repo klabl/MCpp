@@ -2,6 +2,9 @@ Add Module BC:
     Replace the Diamond Pickaxe in the Quarry recipe to a diamond Drill,
         when IC2 is installed
 
+Add Module RC:
+    Make lanterns fillabe with creosote oil
+
 Add Module MaB:
     Make the stamina bar render behind the exp bar
     Change the menu buttons, so they no longer interfere with potion effects
@@ -12,12 +15,23 @@ Add Module Physics:
     Make flying Blocks (blocks that only touch air) fall down
 
 Add Module Torches:
-    ...
+    Change all torches crafted to unlit torches
+    Make torches lightable with flint or flint and steel,
+        when using flint, the flint is consumed
+    Make lit torches go out after 30min in world or in the inventory
+    Make lanterns, which require oil to burn, which will burn for 120mins
+        when fully filled
+    Make fat craftable with raw beef or porkchop
+    Make bottled fat, which can be crafted with a glass bottle and 3 animal fat
+    Make bottled oil craftable by smelting bottled fat in a furnace
+
 
 IC2:
     Add industrial way of purifying water
     Replace some machine blocks with multiblock structures
     Add radioactivity to blocks.
+    Add meteor crash sites which contain some iridium
+    Add platinum ore, which yields iridium when centrifuged
 
 Monster:
     Create Skeleton melee Warrior
