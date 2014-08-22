@@ -15,7 +15,7 @@ public class MCppModuleSurvival extends MCppModule {
 
     public MCppModuleSurvival(boolean enable) {
 
-        super("SURVIVAL", enable, new MCppModule[]{THIRST}, null);
+        super("SURVIVAL", enable, Phase.PRE_INIT, new MCppModule[]{THIRST}, null);
     }
 
     @Override

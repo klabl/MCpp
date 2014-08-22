@@ -35,8 +35,8 @@ public abstract class MCppModule {
 
         for(MCppModule module : modules()) {
 
-            if(module.modDependant != null && phase != Phase.POST_INIT) continue;
-            else module.load();
+            if(module.phase == phase)
+                module.load();
         }
     }
 
@@ -61,18 +61,20 @@ public abstract class MCppModule {
 
     public Exception loadingException;
 
+    public final Phase phase;
     public final String modDependant;
     private final MCppModule[] dependants;
 
     protected MCppModule(String name, boolean enable) {
 
-        this(name, enable, new MCppModule[]{}, null);
+        this(name, enable, Phase.PRE_INIT, new MCppModule[]{}, null);
     }
 
-    protected MCppModule(String name, boolean enable, MCppModule[] dependants, String modDependant) {
+    protected MCppModule(String name, boolean enable, Phase phase, MCppModule[] dependants, String modDependant) {
 
         this.name = name;
         this.isLoaded = false;
+        this.phase = phase;
         this.modDependant = modDependant;
         this.loadingException = null;
 

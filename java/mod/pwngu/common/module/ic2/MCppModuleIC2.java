@@ -18,7 +18,7 @@ public class MCppModuleIC2 extends MCppModule {
 
     public MCppModuleIC2(boolean enable) {
 
-        super("IC2", enable, new MCppModule[]{ORE}, "IC2");
+        super("IC2", enable, Phase.POST_INIT, new MCppModule[]{ORE}, "IC2");
     }
 
     @Override
