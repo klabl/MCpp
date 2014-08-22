@@ -25,7 +25,6 @@ Add Module Torches:
     Make bottled fat, which can be crafted with a glass bottle and 3 animal fat
     Make bottled oil craftable by smelting bottled fat in a furnace
 
-
 IC2:
     Add industrial way of purifying water
     Replace some machine blocks with multiblock structures
@@ -47,9 +46,11 @@ Ore:
 
 Survival:
     Add Hatchets and Spades
+    Make axes craftable with 2 materials instead of 3
     Reduce base break speed by 50%
     Reduce break speed on wrong blocks by 90%
-    Make some blocks only harvestable when destroyed by proper tool.
+    Triple resistance of wooden blocks, double resistance of sand, gravel dirt and stone blocks
+    Make log only drop
     Reduce movement speed depending on the surface you are walking
 
 Thirst:
