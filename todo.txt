@@ -9,18 +9,23 @@ Add Module MaB:
 Add Module Physics:
     Make Blocks fall down like sand/gravel, when a explosion happens nearby,
         or, with a smaller chance, when you destroy a nearby block
-    Make flying Blocks fall down
+    Make flying Blocks (blocks that only touch air) fall down
 
 Add Module Torches:
     ...
 
 IC2:
     Add industrial way of purifying water
+    Replace some machine blocks with multiblock structures
+    Add radioactivity to blocks.
 
 Monster:
     Create Skeleton melee Warrior
     Change all dungeon spawners to skeleton spawners,
         which spawn ranged and melee skeletons
+    When a player zombieficates, let the zombie carry all the items
+        held by the player and drop them on death.
+    Make Zombies not burn during the day
 
 Ore:
     Generate ores in much bigger veins
@@ -31,6 +36,7 @@ Survival:
     Reduce base break speed by 50%
     Reduce break speed on wrong blocks by 90%
     Make some blocks only harvestable when destroyed by proper tool.
+    Reduce movement speed depending on the surface you are walking
 
 Thirst:
     Limit maximum bow draw depending on hunger level

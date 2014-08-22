@@ -6,6 +6,7 @@ import mod.pwngu.common.module.survivial.util.PlayerSpeed;
 import mod.pwngu.common.util.MCppDamageSource;
 import mod.pwngu.common.util.MCppPotion;
 import mod.pwngu.common.util.MCppPotionEffectFactory;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,8 +15,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.world.WorldEvent;
@@ -44,15 +47,16 @@ public class MCppMonsterEventHandler {
 //        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntityEnderman.class, 10, 1, 4));
 //        baseSpawns.add(new BiomeGenBase.SpawnListEntry(EntityWitch.class, 5, 1, 1));
 
-        surfaceSpawns.add(new BiomeGenBase.SpawnListEntry(EntityZombie.class, 400, 4, 6));
-        surfaceSpawns.add(new BiomeGenBase.SpawnListEntry(EntitySpider.class, 80, 4, 4));
+        surfaceSpawns.add(new BiomeGenBase.SpawnListEntry(EntityZombie.class, 250, 4, 8));
+        surfaceSpawns.add(new BiomeGenBase.SpawnListEntry(EntitySpider.class, 100, 4, 4));
+        surfaceSpawns.add(new BiomeGenBase.SpawnListEntry(EntityCreeper.class, 50, 1, 2));
         surfaceSpawns.add(new BiomeGenBase.SpawnListEntry(EntityEnderman.class, 15, 3, 4));
         surfaceSpawns.add(new BiomeGenBase.SpawnListEntry(EntityWitch.class, 5, 1, 1));
 
-        undergroundSpawns.add(new BiomeGenBase.SpawnListEntry(EntitySpider.class, 300, 4, 6));
+        undergroundSpawns.add(new BiomeGenBase.SpawnListEntry(EntitySpider.class, 250, 4, 6));
         undergroundSpawns.add(new BiomeGenBase.SpawnListEntry(EntityCreeper.class, 100, 1, 2));
         undergroundSpawns.add(new BiomeGenBase.SpawnListEntry(EntitySlime.class, 100, 4, 4));
-        undergroundSpawns.add(new BiomeGenBase.SpawnListEntry(EntityCaveSpider.class, 50, 4, 8));
+        undergroundSpawns.add(new BiomeGenBase.SpawnListEntry(EntityCaveSpider.class, 100, 4, 8));
         undergroundSpawns.add(new BiomeGenBase.SpawnListEntry(EntityEnderman.class, 15, 3, 4));
     }
 
@@ -67,18 +71,7 @@ public class MCppMonsterEventHandler {
             if(stack != null && stack.getItem().equals(Items.golden_apple) &&
                     ev.player.getItemInUseDuration() == (stack.getMaxItemUseDuration() - 1)) {
 
-                if(ev.player.isPotionActive(MCppPotion.ZOMBIEFICATION)) {
-
-                    ev.player.removePotionEffect(MCppPotion.ZOMBIEFICATION.id);
-
-                    PotionEffect zombiefication = ev.player.getActivePotionEffect(MCppPotion.ZOMBIEFICATION);
-
-                    if(zombiefication.getAmplifier() - 1 >= 0) {
-
-                        ev.player.addPotionEffect(MCppPotionEffectFactory.createPotionEffectZombiefication(
-                                Math.min(zombiefication.getDuration() + 12000, 24000), zombiefication.getAmplifier() - 1));
-                    }
-                }
+                ev.player.removePotionEffect(MCppPotion.ZOMBIEFICATION.id);
             }
         }
     }
@@ -165,6 +158,23 @@ public class MCppMonsterEventHandler {
     }
 
     @SubscribeEvent
+    public void onLivingDeath(LivingDeathEvent ev) {
+
+        if(ev.entity.worldObj.isRemote) return;
+
+        if(ev.entityLiving instanceof EntityPlayer) {
+
+            if(ev.entityLiving.isPotionActive(MCppPotion.ZOMBIEFICATION.id) && !ev.source.equals(DamageSource.lava) &&
+                    !ev.source.equals(DamageSource.inFire) && !ev.source.equals(DamageSource.onFire)) {
+
+                EntityZombie zombie = new EntityZombie(ev.entity.worldObj);
+                zombie.copyLocationAndAnglesFrom(ev.entityLiving);
+                ev.entity.worldObj.spawnEntityInWorld(zombie);
+            }
+        }
+    }
+
+    @SubscribeEvent
     public void onLivingUpdate(LivingEvent.LivingUpdateEvent ev) {
 
         if (!ev.entity.worldObj.isRemote && ev.entityLiving instanceof EntityPlayer) {
@@ -178,9 +188,7 @@ public class MCppMonsterEventHandler {
                     if (zombiefication.getDuration() <= 10) { // kill player
 
                         ev.entityLiving.attackEntityFrom(MCppDamageSource.ZOMBIEFICATION, 400.0F);
-                        EntityZombie zombie = new EntityZombie(ev.entity.worldObj);
-                        zombie.copyLocationAndAnglesFrom(ev.entityLiving);
-                        ev.entity.worldObj.spawnEntityInWorld(zombie);
+                        spawnZombieAtPlayerPosition(ev.entityLiving);
                     } else if(zombiefication.getDuration() <= 1200) { // add confusion
 
                         ev.entityLiving.addPotionEffect(MCppPotionEffectFactory.createPotionEffectConfusion(160));
@@ -196,6 +204,8 @@ public class MCppMonsterEventHandler {
                         ev.entityLiving.removePotionEffect(MCppPotion.ZOMBIEFICATION.id);
                         ev.entityLiving.addPotionEffect(MCppPotionEffectFactory.createPotionEffectZombiefication(
                                 24000, zombiefication.getAmplifier() + 1));
+
+                        ev.entityLiving.addPotionEffect(MCppPotionEffectFactory.createPotionEffectConfusion(160));
                     }
                     PlayerSpeed.get((EntityPlayer) ev.entityLiving).removeMultiplier("zombiefication");
                 }
@@ -233,6 +243,14 @@ public class MCppMonsterEventHandler {
 //        ev.list.clear();
         ev.list.addAll(set);
 //        MCpp.log.inf("Spawning: " + getEntitiesFromSpawnList(ev.list));
+    }
+
+    private void spawnZombieAtPlayerPosition(EntityLivingBase player) {
+
+        EntityZombie zombie = new EntityZombie(player.worldObj);
+
+        zombie.copyLocationAndAnglesFrom(player);
+        player.worldObj.spawnEntityInWorld(zombie);
     }
 
 //    private String getEntitiesFromSpawnList(List<BiomeGenBase.SpawnListEntry> list) {
