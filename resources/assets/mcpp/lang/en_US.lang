@@ -1,18 +1,29 @@
-itemGroup.icpp=IC++
+itemGroup.mcpp=MC++
 
 item.nuggets.iron.name=Iron Nugget
+item.nuggets.silver.name=Silver Nugget
+item.nuggets.platinum.name=Platinum Nugget
 item.nuggets.copper.name=Copper Nugget
 item.nuggets.tin.name=Tin Nugget
 item.nuggets.lead.name=Lead Nugget
-item.nuggets.silver.name=Silver Nugget
 
 item.pebbles.iron.name=Iron Pebble
+item.pebbles.silver.name=Silver Pebble
 item.pebbles.gold.name=Gold Pebble
+item.pebbles.platinum.name=Platinum Pebble
 item.pebbles.copper.name=Copper Pebble
 item.pebbles.tin.name=Tin Pebble
 item.pebbles.lead.name=Lead Pebble
-item.pebbles.silver.name=Silver Pebble
 item.pebbles.uranium.name=Uranium Pebble
+
+item.chunks.iron.name=Iron Chunk
+item.chunks.silver.name=Silver Chunk
+item.chunks.gold.name=Gold Chunk
+item.chunks.platinum.name=Platinum Chunk
+item.chunks.copper.name=Copper Chunk
+item.chunks.tin.name=Tin Chunk
+item.chunks.lead.name=Lead Chunk
+item.chunks.uranium.name=Uranium Chunk
 
 item.dusts.blazingGlowstone.name=Blazing Glowstone Dust
 item.dusts.endstone.name=Endstone Dust
