@@ -114,7 +114,7 @@ public class MCppItem extends Item {
     private MCppItem(Names name, int maxStackSize) {
 
         this.name = name;
-//        setCreativeTab(MCpp.mcpptab);
+        setCreativeTab(MCpp.MCPP_TAB);
         setCreativeTab(CreativeTabs.tabMisc);
         setMaxStackSize(maxStackSize);
         setUnlocalizedName(name.unlocalizedName);

@@ -1,11 +1,5 @@
 package mod.pwngu.common.main;
 
-import cpw.mods.fml.common.Loader;
-import mod.pwngu.common.module.MCppModule;
-import mod.pwngu.common.module.thirst.event.MCppThirstEventHandler;
-import mod.pwngu.common.util.MCppPotion;
-import mod.pwngu.lib.PWNLogger;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -14,9 +8,10 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
-import net.minecraft.init.Items;
-import net.minecraft.util.DamageSource;
-import net.minecraftforge.common.MinecraftForge;
+import mod.pwngu.common.module.MCppModule;
+import mod.pwngu.common.util.MCppCreativeTab;
+import mod.pwngu.lib.PWNLogger;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fluids.Fluid;
 
 import java.util.Set;
@@ -38,7 +33,7 @@ public class MCpp {
 
     public static Fluid fluidCleanWater = new Fluid("cleanWater").setUnlocalizedName("cleanWater");
 
-//    public static CreativeTabs mcpptab;
+    public static final CreativeTabs MCPP_TAB = new MCppCreativeTab();
 
     public MCpp() {
 

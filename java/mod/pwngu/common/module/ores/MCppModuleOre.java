@@ -41,6 +41,9 @@ public class MCppModuleOre extends MCppModule {
         GameRegistry.registerItem(GOLD_PEBBLE, GOLD_PEBBLE.name.itemName);
         OreDictionary.registerOre(GOLD_PEBBLE.name.itemName, GOLD_PEBBLE);
 
+        GameRegistry.registerItem(PLATINUM_PEBBLE, PLATINUM_PEBBLE.name.itemName);
+        OreDictionary.registerOre(PLATINUM_PEBBLE.name.itemName, PLATINUM_PEBBLE);
+
         GameRegistry.registerItem(COPPER_PEBBLE, COPPER_PEBBLE.name.itemName);
         OreDictionary.registerOre(COPPER_PEBBLE.name.itemName, COPPER_PEBBLE);
 
