@@ -5,7 +5,6 @@ import mod.pwngu.common.item.MCppItem;
 import mod.pwngu.common.module.MCppModule;
 import mod.pwngu.common.module.survivial.event.MCppBlockBreakHandler;
 import mod.pwngu.common.module.survivial.event.MCppSurvivalEventHandler;
-import mod.pwngu.common.module.thirst.util.NeedStats;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -62,6 +61,5 @@ public class MCppModuleSurvival extends MCppModule {
     @Override
     public void postRegister() {
 
-        NeedStats.regTimer = 300;
     }
 }

@@ -25,8 +25,6 @@ public class NeedStats implements IExtendedEntityProperties {
     private static final int THIRST_LEVEL_WATCHER = 20;
     private static final int FAT_LEVEL_WATCHER = 21;
 
-    public static int regTimer = 80;
-
     public static void register(EntityPlayer player) {
 
         player.registerExtendedProperties(NeedStats.PROPERTY_NAME, new NeedStats(player));
@@ -164,7 +162,7 @@ public class NeedStats implements IExtendedEntityProperties {
 
             this.timer++;
 
-            if(this.timer >= regTimer) {
+            if(this.timer >= 300) {
 
                 if(!player.isPotionActive(MCppPotion.WOUNDED)) {
 
