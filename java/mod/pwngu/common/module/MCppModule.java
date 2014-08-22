@@ -95,8 +95,6 @@ public abstract class MCppModule {
 
     public void load() {
 
-        MCpp.log.inf("loading " + name);
-
         //When the module isn't enabled or is already loaded or already failed to load with an exception
         if(!isEnabled || isLoaded || loadingException != null) return;
         if(modDependant != null && !Loader.isModLoaded(modDependant)) return;
