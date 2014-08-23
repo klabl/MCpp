@@ -54,5 +54,8 @@ Survival:
     Reduce movement speed depending on the surface you are walking
 
 Thirst:
+    Remove the "generation" of water source blocks
+    Make water blocks infinite (they don't go away when filling a bucket)
+        when touching many other water source blocks (sea, large lakes)
     Limit maximum bow draw depending on hunger level
     Add some more ways to recover thirst
