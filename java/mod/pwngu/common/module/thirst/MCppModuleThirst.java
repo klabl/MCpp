@@ -43,7 +43,7 @@ public class MCppModuleThirst extends MCppModule {
         //Filter
 
         GameRegistry.registerItem(FILTER, FILTER.name.itemName);
-        GameRegistry.registerItem(FILTER_NET, FILTER_NET.name.itemName);
+//        GameRegistry.registerItem(FILTER_NET, FILTER_NET.name.itemName);
     }
 
     @Override
@@ -56,11 +56,8 @@ public class MCppModuleThirst extends MCppModule {
 
         //Drinks
 
-        GameRegistry.addRecipe(new ItemStack(FILTER_NET), "sss", "sss", "sss",
-                's', new ItemStack(Items.string));
-
-        GameRegistry.addRecipe(new ItemStack(MCppItem.FILTER, 1, 0), "sss", "sns", "sss",
-                'n', new ItemStack(MCppItem.FILTER_NET), 's', new ItemStack(Items.stick));
+        GameRegistry.addRecipe(new ItemStack(MCppItem.FILTER, 1, 0), "s#s", "###", "s#s",
+                '#', new ItemStack(Items.string), 's', new ItemStack(Items.stick));
 
         GameRegistry.addShapelessRecipe(new ItemStack(MCppItem.CLEAN_WATER_BOTTLE),
                 new ItemStack(Items.potionitem, 1, 0), new ItemStack(MCppItem.FILTER, 1, OreDictionary.WILDCARD_VALUE));

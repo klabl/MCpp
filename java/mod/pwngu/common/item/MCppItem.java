@@ -46,8 +46,8 @@ public class MCppItem extends Item {
 
     public static final ItemBandage BANDAGE = new ItemBandage();
 
-    public static final MCppItemTool FILTER = (MCppItemTool) new MCppItemTool(Names.FILTER, 0.0F, ToolMaterial.WOOD, null).setMaxDamage(30);
-    public static final MCppItem FILTER_NET = new MCppItem(Names.FILTER_NET);
+    public static final MCppItemTool FILTER = (MCppItemTool) new MCppItemTool(Names.FILTER, 0.0F, ToolMaterial.WOOD, null).setMaxDamage(20);
+//    public static final MCppItem FILTER_NET = new MCppItem(Names.FILTER_NET);
 
     public static enum Names {
 
@@ -91,7 +91,7 @@ public class MCppItem extends Item {
         CLEAN_WATER_BOTTLE("cleanWaterBottle", "bottles.cleanWater", "bottle_clean_water"),
 
         FILTER("filter","tools.filter","filter"),
-        FILTER_NET("filterNet", "filterNet", "filterNet"),
+//        FILTER_NET("filterNet", "filterNet", "filter_net"),
 
         CANTEEN("canteen", "tools.canteen", "canteen"),
 

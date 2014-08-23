@@ -40,6 +40,7 @@ item.bottles.cleanWater.name=Purified Water Bottle
 item.bandage.name=Bandage
 
 item.tools.filter.name=Water Filter
+item.filterNet.name=Water Filter Net
 
 item.buckets.cleanWater.name=Clean Water Bucket
 
